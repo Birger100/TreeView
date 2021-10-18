@@ -1,0 +1,19 @@
+﻿@model List<WebApplication1.Models.TreeViewModel>
+
+@{
+    int id = Int32.Parse(@ViewData["id"].ToString());
+}
+@if (Model.Any(x => x.ParentId == id))
+{
+    <ul>
+        @foreach (var item in Model.Where(x => x.ParentId == id))
+        {
+            <li data-value="@item.Id">
+               @*@(Model.Any(x => x.ParentId == item.Id) ? "" :"")  <input type="checkbox" value="@item.Id" />*@
+                @item.Name
+                @Html.Partial("RenderTreeView", Model, new ViewDataDictionary { { "id", item.Id } })
+            </li>
+
+        }
+    </ul>
+}
