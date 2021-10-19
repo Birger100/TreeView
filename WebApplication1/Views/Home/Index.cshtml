@@ -34,7 +34,7 @@
 
         $(document).ready(function () {
             console.log("trd");
-            $('#treeview').treeview({
+          var tree =  $('#treeview').treeview({
 
                 debug: true,
 
@@ -47,6 +47,15 @@
               
                 console.log($('#treeview-checkbox-demo').treeview('selectedValues'));
                 
+            });
+
+            $("i").click(function () {
+                console.log("clicked");
+                var value = $(this).parent().children(":checkbox").first();
+                //console.log(value);
+                _toggleCollapse($(value));
+             /* testHest( );*/
+                //_toggleCollapse
             });
         });
     </script>

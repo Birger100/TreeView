@@ -1,11 +1,17 @@
-(function( $ ){
+
+function testHest() {
+    console.log("test");
+   
+}
+
+(function ($) {
     var plugin = {
         name: 'TreeView',
         version: '1.0.0'
     }
     var defaults = {
         debug : false,
-        autoExpand : false,
+        autoExpand: false,
         css : {
             list : 'fa-ul',
             listItem : 'fa-li fa',
@@ -45,9 +51,9 @@
         me.trigger('treeview.change', currentTarget, me);
     }
     
-    function _toggleCollapse ( element ) {
+    this._toggleCollapse =  function _toggleCollapse ( element ) {
         debug.log("Toggle collapse");
-        
+        debug.log(element);
         var chk = $('input[type="checkbox"]:checked');
         
         if (chk.is(':checked')) {
