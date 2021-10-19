@@ -65,9 +65,9 @@
         if (isChecked) {
             debug.log('Check my parents tree');
 
-            currentTarget.parents('li')
-                .find('>input.tw-control')
-                .prop('checked', true);
+            //currentTarget.parents('li')
+            //    .find('>input.tw-control')
+            //    .prop('checked', true);
         }
 
         _toggleCollapse(currentTarget);
@@ -124,8 +124,8 @@
                     .collapse('show')
                     .parent()
                     .find('>i.fa-li')
-                    .removeClass(settings.css.collapsed)
-                    .addClass(settings.css.expanded);
+                    removeClass(settings.css.collapsed)
+                    addClass(settings.css.expanded);
             }
 
         if (!element.is(':checked')) {
