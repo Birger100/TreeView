@@ -11,10 +11,19 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
+            var testModel = new TestModel
+            {
+                Id = 1,
+                Name = "test",
+                TreeViewModels = PopulateList()
 
-            var model = PopulateList();
+            };
+            return View(testModel);
+        }
+        public ActionResult Create(TestModel model)
+        {
 
-            return View(model);
+            return View("Index", model);
         }
 
         public ActionResult About()
@@ -35,7 +44,7 @@ namespace WebApplication1.Controllers
         {
             var list = new List<TreeViewModel>();
 
-            list.Add(new TreeViewModel {Id= 1,Name="Top 1",ParentId=0});
+            list.Add(new TreeViewModel { Id = 1, Name = "Top 1", ParentId = 0 });
             list.Add(new TreeViewModel { Id = 2, Name = "Top 2", ParentId = 0 });
             list.Add(new TreeViewModel { Id = 3, Name = "Top 3", ParentId = 0 });
             list.Add(new TreeViewModel { Id = 4, Name = "Top 4", ParentId = 0 });

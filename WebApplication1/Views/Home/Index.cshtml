@@ -1,28 +1,49 @@
-﻿@model  List<WebApplication1.Models.TreeViewModel>
+﻿@model  WebApplication1.Models.TestModel
 @{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+@using (Html.BeginForm("create","home"))
+{
+    @Html.AntiForgeryToken()
 
-<div class="row">
-    <div class="col-md-12">
-        <div id="treeview">
-                @Html.Partial("RenderTreeView", Model, new ViewDataDictionary { { "id", 0 } })
+<div class="form-horizontal">
+    <h4>TestModel</h4>
+    <hr />
+    
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="treeview">
+                @Html.Partial("RenderTreeView", Model.TreeViewModels, new ViewDataDictionary { { "id", 0 } })
             </div>
 
-       
 
-        <button type="button" class="btn btn-success" id="show-values">Get Values</button>
 
-        <pre id="values"></pre>
+            <button type="button" class="btn btn-success" id="show-values">Get Values</button>
 
+            <pre id="values"></pre>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" onclick="createSave()" value="Create" class="btn btn-default" />
+        </div>
     </div>
 </div>
+}
+
+
 @section scripts{
     <link type="text/css” rel=”stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,24 +55,30 @@
 
         $(document).ready(function () {
             console.log("trd");
-          var tree =  $('#treeview').treeview({
+            var tree = $('#treeview').treeview({
 
                 debug: true,
 
-              /*  data: ["10"]*/
+                /*  data: ["10"]*/
 
             });
             console.log("trd 2");
 
+            function createSave() {
+                $('#treeview-checkbox-demo').treeview('selectedValues')
+                console.log("create" + $('#treeview-checkbox-demo').treeview('selectedValues'));
+            }
+
             $('#show-values').on('click', function () {
-              
-                console.log($('#treeview-checkbox-demo').treeview('selectedValues'));
+
                 
+                console.log($('#treeview-checkbox-demo').treeview('selectedValues'));
+
             });
 
             $("i").click(function () {
                 _toggleCollapseCustom($(this));
-           
+
             });
         });
     </script>
