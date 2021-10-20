@@ -22,8 +22,15 @@ namespace WebApplication1.Controllers
         }
         public ActionResult Create(TestModel model)
         {
+            var testModel = new TestModel
+            {
+                Id = 1,
+                Name = "test",
+                TreeViewModels = PopulateList()
 
-            return View("Index", model);
+            };
+
+            return View("Index", testModel);
         }
 
         public ActionResult About()

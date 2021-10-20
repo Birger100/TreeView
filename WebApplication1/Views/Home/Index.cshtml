@@ -34,10 +34,10 @@
 
         </div>
     </div>
-
+    @Html.HiddenFor(x=>x.SelectedValues)
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" onclick="createSave()" value="Create" class="btn btn-default" />
+            <input type="submit"  value="Create" class="btn btn-default" />
         </div>
     </div>
 </div>
@@ -54,24 +54,26 @@
     <script>
 
         $(document).ready(function () {
+
+            $("form").submit(function () {
+                document.getElementById('SelectedValues').value = $('#treeview-checkbox-demo').treeview('selectedValues');
+            });
+
             console.log("trd");
             var tree = $('#treeview').treeview({
 
-                debug: true,
-
-                /*  data: ["10"]*/
+                debug: false,
+                
+                
 
             });
             console.log("trd 2");
 
-            function createSave() {
-                $('#treeview-checkbox-demo').treeview('selectedValues')
-                console.log("create" + $('#treeview-checkbox-demo').treeview('selectedValues'));
-            }
+           
 
             $('#show-values').on('click', function () {
 
-                
+                document.getElementById('PostID').value = SelectedValues;
                 console.log($('#treeview-checkbox-demo').treeview('selectedValues'));
 
             });

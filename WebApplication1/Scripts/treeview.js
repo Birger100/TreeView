@@ -124,8 +124,8 @@
                     .collapse('show')
                     .parent()
                     .find('>i.fa-li')
-                    removeClass(settings.css.collapsed)
-                    addClass(settings.css.expanded);
+                    .removeClass(settings.css.collapsed)
+                    .addClass(settings.css.expanded);
             }
 
         if (!element.is(':checked')) {
