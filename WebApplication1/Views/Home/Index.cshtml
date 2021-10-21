@@ -25,6 +25,9 @@
             <div id="treeview">
                 @Html.Partial("RenderTreeView", Model.TreeViewModels, new ViewDataDictionary { { "id", 0 } })
             </div>
+            <div id="treeview2">
+                @Html.Partial("RenderTreeView", Model.TreeViewModels2, new ViewDataDictionary { { "id", 0 } })
+            </div>
 
 
 
@@ -61,11 +64,10 @@
 
             console.log("trd");
             var tree = $('#treeview').treeview({
-
                 debug: false,
-                
-                
-
+            });
+            var tree2 = $('#treeview2').treeview({
+                debug: false,
             });
             console.log("trd 2");
 
@@ -73,8 +75,9 @@
 
             $('#show-values').on('click', function () {
 
-                document.getElementById('PostID').value = SelectedValues;
-                console.log($('#treeview-checkbox-demo').treeview('selectedValues'));
+                //document.getElementById('PostID').value = SelectedValues;
+                console.log("1 : " + _selectedValuesCustom('treeview'));
+                console.log("2 : " + _selectedValuesCustom('treeview2'));
 
             });
 

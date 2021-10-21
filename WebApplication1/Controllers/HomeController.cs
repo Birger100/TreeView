@@ -15,7 +15,8 @@ namespace WebApplication1.Controllers
             {
                 Id = 1,
                 Name = "test",
-                TreeViewModels = PopulateList()
+                TreeViewModels = PopulateList(),
+                TreeViewModels2 = PopulateList2()
 
             };
             return View(testModel);
@@ -26,7 +27,8 @@ namespace WebApplication1.Controllers
             {
                 Id = 1,
                 Name = "test",
-                TreeViewModels = PopulateList()
+                TreeViewModels = PopulateList(),
+                TreeViewModels2 = PopulateList2()
 
             };
 
@@ -47,6 +49,30 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+
+        private List<TreeViewModel> PopulateList2()
+        {
+            var list = new List<TreeViewModel>();
+
+            list.Add(new TreeViewModel { Id = 111, Name = "Top 1", ParentId = 0 });
+            list.Add(new TreeViewModel { Id = 1121, Name = "Top 2", ParentId = 0 });
+            list.Add(new TreeViewModel { Id = 113, Name = "Top 3", ParentId = 0 });
+            list.Add(new TreeViewModel { Id = 114, Name = "Top 4", ParentId = 0 });
+
+            //top 1 childern
+            list.Add(new TreeViewModel { Id = 115, Name = "T1-Child 1", ParentId = 1 });
+            list.Add(new TreeViewModel { Id = 116, Name = "T1-Child 2", ParentId = 1 });
+            list.Add(new TreeViewModel { Id = 117, Name = "T1-Child 3", ParentId = 1 });
+
+            //top 2 childern
+            list.Add(new TreeViewModel { Id = 118, Name = "T2-Child 1", ParentId = 2 });
+            list.Add(new TreeViewModel { Id = 119, Name = "T2-Child 2", ParentId = 2 });
+
+            //t2-child 1 children
+            list.Add(new TreeViewModel { Id = 1110, Name = "T2-Child 1-1", ParentId = 6 });
+            list.Add(new TreeViewModel { Id = 1111, Name = "T2-Child 1-2", ParentId = 6 });
+            return list;
+        }
         private List<TreeViewModel> PopulateList()
         {
             var list = new List<TreeViewModel>();

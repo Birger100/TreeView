@@ -74,6 +74,24 @@
         me.trigger('treeview.change', currentTarget, me);
     }
 
+    this._selectedValuesCustom = function _selectedValuesCustom(name) {
+        console.log("Getting selected values Custom");
+        console.log("name " + name);
+        console.log(me);
+        var chk = $("#"+name).find('input[type="checkbox"]:checked');
+        var output = [];
+
+        chk.each(function (index, item) {
+            var item = $(item);
+
+            if (typeof item.parent().attr('data-value') !== typeof undefined) {
+                output.push(item.attr('value'));
+            }
+        })
+
+        return output;
+    }
+
     this._toggleCollapseCustom = function _toggleCollapseCustom(element) {
         debug.log("Toggle _toggleCollapseCustom");
         debug.log(element);
@@ -213,7 +231,7 @@
             return this;
         },
         selectedValues: function () {
-            debug.log("Getting selected values");
+            console.log("Getting selected values");
 
             var chk = me.find('input[type="checkbox"]:checked');
             var output = [];
@@ -228,6 +246,25 @@
 
             return output;
         }
+       
+    }
+
+    this.selectedValuesCustom = function selectedValuesCustom (name) {
+        console.log("Getting selected values Custom");
+        console.log("name " + name);
+        console.log(me);
+        var chk = me.find('input[type="checkbox"]:checked');
+        var output = [];
+
+        chk.each(function (index, item) {
+            var item = $(item);
+
+            if (typeof item.parent().attr('data-value') !== typeof undefined) {
+                output.push(item.attr('value'));
+            }
+        })
+
+        return output;
     }
 
     $.fn.treeview = function (options) {

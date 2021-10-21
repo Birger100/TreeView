@@ -10,6 +10,7 @@ namespace WebApplication1.Models
         public int Id { get; set; }
         public string Name  { get; set; }
         public List<TreeViewModel> TreeViewModels { get; set; }
+        public List<TreeViewModel> TreeViewModels2 { get; set; }
         public string SelectedValues { get; set; }
     }
 }
